@@ -1,0 +1,98 @@
+﻿
+To add new gametype / maps:
+1) Modify BF3Classes.cs and add the new game types
+2) Modify Program.cs and add the new maps and valid game types.
+3) Modify MainForm.cs #region GAMETYPE_PROCESSING and add the new game type processing
+4) Update menu for new game type!
+5) Update Changelog in README.txt 
+
+// Application Setting Persistence
+http://msdn.microsoft.com/en-us/library/ms973902.aspx
+
+
+// Enums
+http://www.codeproject.com/Articles/37921/Enums-Flags-and-C-Oh-my-bad-pun
+
+// Max players per game type
+Team Death Match = 24
+Squad Death Match = 16
+Rush = 32
+Squad Rush = 8
+Conquest = 32 & 64
+
+// Each map and the enums of the game types.
+    /*
+     * Grand Bazaar,        MP_001,     SDM,TDM,SQR,RSH,CQS,CQL = Base
+     * Teheran Highway,     MP_003,     SDM,TDM,SQR,RSH,CQS,CQL = Base
+     * Caspian Border,      MP_007,     SDM,TDM,SQR,RSH,CQS,CQL = Base
+     * Seine Crossing,      MP_011,     SDM,TDM,SQR,RSH,CQS,CQL = Base
+     * Operation Firestorm, MP_012,     SDM,TDM,SQR,RSH,CQS,CQL = Base
+     * Damavand Peak,       MP_013,     SDM,TDM,SQR,RSH,CQS,CQL = Base
+     * Noshahr Canals,      MP_017,     SDM,TDM,SQR,RSH,CQS,CQL = Base
+     * Kharg Island,        MP_018,     SDM,TDM,SQR,RSH,CQS,CQL = Base
+     * Operation Metro,     MP_Subway,  SDM,TDM,SQR,RSH,CQS,CQL = Base
+     * Gulf of Oman,        XP1_002,    SDM,TDM,SQR,RSH,CQS,CQL,    AS = Base + AS
+     * Strike at Karkand,   XP1_001,    SDM,TDM,SQR,RSH,            AS,AS2,ASL = Expansion1
+     * Sharqi Peninsula,    XP1_003,    SDM,TDM,SQR,RSH,            AS,AS2,ASL =  Expansion1
+     * Wake Island,         XP1_004,    SDM,TDM,SQR,RSH,            AS,AS2,ASL =  Expansion1
+     * 
+     * ConquestAssaultLarge0=ASL
+     * ConquestAssaultSmall0=AS
+     * ConquestAssaultSmall1=AS2
+     * ConquestLarge0=CQL
+     * ConquestSmall0=CQS
+     * RushLarge0=RSH
+     * SquadDeathMatch0=SDM
+     * SquadRush0=SQR
+     * TeamDeathMatch0=TDM
+     * 
+     */
+
+// Sample Maplist.txt output
+XP1_003 ConquestAssaultSmall1 1 // Assault #2
+MP_012 RushLarge0 2 // Rush
+XP1_001 ConquestAssaultSmall1 1 // Assault #2
+MP_013 ConquestSmall0 1 
+XP1_003 RushLarge0 2
+MP_018 ConquestSmall0 1
+MP_012 ConquestSmall0 1
+XP1_002 RushLarge0 2
+MP_018 ConquestSmall0 1
+MP_012 ConquestSmall0 1
+MP_013 RushLarge0 2
+XP1_004 ConquestAssaultSmall0 1
+XP1_001 ConquestAssaultSmall1 1 // Assault #2
+MP_003 RushLarge0 2
+XP1_003 ConquestAssaultSmall1 1 // Assault #2
+XP1_004 RushLarge0 2
+MP_001 ConquestLarge0 2
+XP1_001 ConquestAssaultLarge0 2
+MP_001 ConquestSmall0 2
+XP1_001 ConquestAssaultSmall0 2
+XP1_001 ConquestAssaultSmall1 2
+MP_001 RushLarge0 2
+MP_001 SquadRush0 2
+MP_001 TeamDeathMatch0 2
+MP_001 SquadDeathMatch0 2
+
+=======
+
+Part of the old weighting code
+
+        //private void weightingToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    // Create instance of WeightEditor form
+        //    WeightEditor weditor = new WeightEditor();
+        //    // Show the form modally
+        //    weditor.ShowDialog();
+        //    // Clear the map list
+        //    lvMaps.Items.Clear();
+        //    // Repopulate the lvmaps control with updated class from weight editor
+        //    foreach (BF3Map gamemap in Program.BF3Maps)
+        //    {
+        //        ListViewItem item = new ListViewItem();
+        //        item.Text = gamemap.FriendlyName;
+        //        item.SubItems.Add(gamemap.Weight.ToString());
+        //        lvMaps.Items.Add(item);
+        //    }
+        //}
